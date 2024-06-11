@@ -1,0 +1,32 @@
+.heroes__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .heroes__actions {
+        display: flex;
+        justify-content: space-between;
+
+        .search__input {
+            width: 300px;
+        }
+    }
+
+    .cards__container {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .heroes__container {
+        .heroes__actions {
+            flex-direction: column;
+
+            .search__input {
+                width: 100%;
+            }
+        }
+    }
+}

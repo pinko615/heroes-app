@@ -1,0 +1,35 @@
+<h5>{{ isEdition ? 'Edit ' + (hero.name | capitalize) : 'Add new Hero' }}</h5>
+<form [formGroup]="form">
+    @for (field of heroFormConfig; track field) {
+    @if (field.type === 'input') {
+    <mat-form-field>
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [formControlName]="field.controlName">
+        @if (field.hasIcon && field.icon && !isEdition) {
+        <mat-icon (click)="setRandomImage()" matSuffix matTooltip="{{ field.icon.tooltip }}">
+            {{ field.icon.name }}
+        </mat-icon>
+        }
+    </mat-form-field>
+    }
+    @if (field.type === 'sliderGroup') {
+    <ng-container formGroupName="powerstats">
+        @for (child of field.children; track child) {
+        <div class="form__group">
+            <mat-label>{{ child.label }}</mat-label>
+            <mat-slider [discrete]="false" [showTickMarks]="false">
+                <input matSliderThumb [formControlName]="child.controlName" #slider>
+            </mat-slider>
+        </div>
+        }
+    </ng-container>
+    }
+    }
+
+</form>
+<div class="actions">
+    <button mat-button (click)="discardChanges()">Discard changes</button>
+    <button (click)="isEdition ? editHero() : createHero()" mat-flat-button [disabled]="!form.valid || form.pristine">
+        Save changes
+    </button>
+</div>

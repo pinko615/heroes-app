@@ -1,0 +1,18 @@
+@if (showLoading) {
+<app-loading></app-loading>
+} @else {
+<div class="heroes__container">
+    <div class="heroes__actions">
+        <mat-form-field class="search__input" appearance="outline">
+            <mat-label>Search hero by name</mat-label>
+            <input matInput type="text" [(ngModel)]="search" (ngModelChange)="onSearchChange($event)">
+        </mat-form-field>
+        <button mat-flat-button (click)="navigateToCreate()">Add new hero</button>
+    </div>
+    <div class="cards__container">
+        @for (hero of filteredHeroes; track hero) {
+        <app-card [hero]="hero" (onHeroDelete)="getHeroes()"></app-card>
+        }
+    </div>
+</div>
+}

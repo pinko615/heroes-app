@@ -1,0 +1,50 @@
+<button mat-flat-button (click)="goToHomePage()">Go back</button>
+<div class="hero__container">
+    <div class="hero__image">
+        <img [src]="hero.imageUrl" />
+    </div>
+    <div class="hero__description">
+        <div class="description__group">
+            <label>Name:</label>
+            <p>{{ hero.name | capitalize }}</p>
+        </div>
+        <div class="description__group">
+            <label>Fullname:</label>
+            <p>{{ hero.fullname }}</p>
+        </div>
+        <div class="description__group">
+            <label>First appearance:</label>
+            <p>{{ hero.firstAppearance }}</p>
+        </div>
+        <div class="description__group">
+            <label>Publisher:</label>
+            <p>{{ hero.publisher }}</p>
+        </div>
+        <div class="description__group">
+            <label>Work:</label>
+            <p>{{ hero.work }}</p>
+        </div>
+        <div class="powers">
+            <div class="power__progress">
+                <label>Combat:</label>
+                <mat-progress-bar mode="determinate"
+                    [value]="hero.powerstats && hero.powerstats.combat"></mat-progress-bar>
+            </div>
+            <div class="power__progress">
+                <label>Power:</label>
+                <mat-progress-bar mode="determinate"
+                    [value]="hero.powerstats && hero.powerstats.power"></mat-progress-bar>
+            </div>
+            <div class="power__progress">
+                <label>Intelligence:</label>
+                <mat-progress-bar mode="determinate"
+                    [value]="hero.powerstats && hero.powerstats.intelligence"></mat-progress-bar>
+            </div>
+            <div class="power__progress">
+                <label>Speed:</label>
+                <mat-progress-bar mode="determinate"
+                    [value]="hero.powerstats && hero.powerstats.speed"></mat-progress-bar>
+            </div>
+        </div>
+    </div>
+</div>

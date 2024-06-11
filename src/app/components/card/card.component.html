@@ -1,0 +1,23 @@
+<mat-card class="card">
+    <mat-card-header class="card__header">
+        <mat-card-title>{{ hero.name | capitalize }}</mat-card-title>
+        <mat-card-subtitle>{{ hero.fullname }}</mat-card-subtitle>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Show more menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="navigateToEditHero(hero.slug)">
+                <mat-icon>create</mat-icon>
+                <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="deleteHero(hero)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+            </button>
+        </mat-menu>
+    </mat-card-header>
+    <img mat-card-image [src]="hero.imageUrl" [alt]="'Photo of ' + hero.fullname" class="card__image">
+    <mat-card-actions class="card__actions">
+        <button mat-button (click)="navigateToHero(hero.slug)">View details</button>
+    </mat-card-actions>
+</mat-card>
